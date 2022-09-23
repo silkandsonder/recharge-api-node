@@ -18,4 +18,9 @@ Customer.prototype.getPaymentSources = function paymentSources(id) {
     return this.recharge.request(url, 'GET', 'payment_sources');
 };
 
+Customer.prototype.getDeliverySchedule = function deliverySchedule(id) {
+    const url = this.buildUrl(id, undefined, 'delivery_schedule');
+    return this.recharge.request(url, 'GET', undefined);
+};
+
 module.exports = Customer;

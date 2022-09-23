@@ -98,6 +98,12 @@ Recharge.prototype.request = function request(url, method, key, params) {
       options.headers['X-Recharge-Access-Token'] = this.options.apiKey;
     }
 
+    if (options.path.startsWith('/customers/') && options.path.endsWith('/delivery_schedule')) {
+      options.headers['X-Recharge-Version'] = '2021-11';
+    } else {
+      options.headers['X-Recharge-Version'] = '2021-01';
+    }
+
     if (typeof params != 'undefined') {
       options.json = params;
     }
